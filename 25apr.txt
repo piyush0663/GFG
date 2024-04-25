@@ -1,0 +1,18 @@
+class Solution {
+  public:
+    int findMaxSum(int n, int m, vector<vector<int>> mat) {
+        int sum=0,ans=-1;
+        for(int i=0;i<n;i++){
+            for(int j=0;j<m;j++){
+                if(i+2>=n or j+2>=m) break;
+                sum=0;
+                for(int k=0;k<3;k++) for(int l=0;l<3;l++){
+                    if(k==1 and (l==0 or l==2)) continue;
+                    sum+=mat[i+k][j+l];
+                }
+                ans=max(ans,sum);
+            }
+        }
+        return ans;
+    }
+};
