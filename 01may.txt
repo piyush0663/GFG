@@ -1,0 +1,22 @@
+class Solution {
+  public:
+   
+    struct Node* arrangeCV(Node* head) {
+       Node *root=new Node('0');
+       Node *ptr=root;
+       Node *curr=head;
+       while(curr!=NULL){
+           if(curr->data=='a' || curr->data=='e' || curr->data=='i' || curr->data=='o' || curr->data=='u')
+           ptr->next=new Node(curr->data),ptr=ptr->next;
+           curr=curr->next;
+       }
+       
+       curr=head;
+       while(curr!=NULL){
+           if(!(curr->data=='a' || curr->data=='e' || curr->data=='i' || curr->data=='o' || curr->data=='u'))
+           ptr->next=new Node(curr->data),ptr=ptr->next;
+           curr=curr->next;
+       }
+       return root->next;
+    }
+};
