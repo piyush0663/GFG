@@ -1,0 +1,33 @@
+class Solution {
+    Node* solve(int* in, int* post, int n, int inLow, int inHigh, int postLow, int postHigh) {
+        if(inLow > inHigh) return NULL;
+        int x = post[postHigh];
+        int rootInd = -1;
+        
+        for(int i = 0; i < n; i++) {
+            if(x == in[i]) {
+                rootInd = i;
+                break;
+            }
+        }
+        
+        int leftCount = rootInd - inLow;
+        int rightCount = inHigh - rootInd - 1;
+        
+        int leftInLow = inLow, leftInHigh = rootInd - 1;
+        int rightInLow = rootInd + 1, rightInHigh = inHigh;
+        int leftPostLow = postLow, leftPostHigh = postLow + leftCount - 1;
+        int rightPostLow = leftPostHigh + 1, rightPostHigh = postHigh - 1;
+        
+        Node* root = new Node(x);
+        root->left = solve(in, post, n, leftInLow, leftInHigh, leftPostLow, leftPostHigh);
+        root->right = solve(in, post, n, rightInLow, rightInHigh, rightPostLow, rightPostHigh);
+        
+        return root;
+    }
+    
+public:
+    Node* buildTree(int in[], int post[], int n) {
+        return solve(in, post, n, 0, n - 1, 0, n - 1);
+    }
+};
