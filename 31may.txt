@@ -1,0 +1,34 @@
+class Solution {
+  public:
+    int swapNibbles(int n) {
+        
+        // let n=100 (01100100 in binary)
+        
+        int lowerNibble = 0, upperNibble = 0; 
+        
+        lowerNibble = n & 15;
+    /*     n  = 01100100
+         & 15 = 00001111
+        lower = 00000100 (copy the last 4 bits)
+    */
+        upperNibble = n & 240;
+    /*     n  = 01100100
+        & 240 = 11110000
+        lower = 01100000 (copy the first 4 bits)
+    */
+        
+        lowerNibble <<= 4;
+        // lower = 01000000
+        
+        upperNibble >>= 4;
+        // upper = 00000110
+        
+        return lowerNibble | upperNibble;// perform OR
+        /*
+           lower = 01000000
+         | upper = 00000110
+        SOLUTION = 01000110
+        */
+        
+    }
+};
