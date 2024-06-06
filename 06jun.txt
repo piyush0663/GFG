@@ -1,0 +1,27 @@
+class Solution {
+  public:
+    long long max_sum(int a[], int n) {
+        long long initialSum = 0;
+        long long int total = 0;
+        for(int i = 0; i<n; i++){
+            initialSum += (long long)a[i] * i;
+            total += a[i];
+        }
+        cout<<total<<initialSum<<endl;
+        long long int maxi = initialSum;
+        
+        int index = n-1;
+        
+        long long int tempSum = initialSum;
+        
+        while(index > 0){
+           tempSum += total - (long long)n * a[index];
+           cout<<tempSum;
+            index--;
+            maxi = max(tempSum, maxi);
+        }
+        
+        return maxi;
+        
+    }
+};
