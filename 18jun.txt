@@ -1,0 +1,17 @@
+class Solution {
+  public:
+    /* rsingh2003 */
+    int rectanglesInCircle(int r) {
+        int ans {};    // variable to store the answer
+        for(int l = 1; l < 2*r; l++)
+        {
+            for(int b = 1; b < 2*r; b++)
+            {
+            
+                if(l*l + b*b <= 4*r*r)
+                    ans++;
+            }
+        }
+        return ans;
+    }
+};
