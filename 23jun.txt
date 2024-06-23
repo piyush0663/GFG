@@ -1,0 +1,26 @@
+class Solution {
+  public:
+
+    vector<int> bracketNumbers(string str) {
+        // Your code goes here
+        vector<int> ans;
+        stack <int> st;
+        int cnt = 0;
+        
+        for(char c : str){
+            
+            if(c == '('){
+                cnt++;
+                st.push(cnt);
+                ans.push_back(cnt);
+            }
+            
+            else if(c == ')') {
+                ans.push_back(st.top());
+                st.pop();
+            }
+            
+        } 
+        return ans;
+    }
+};
