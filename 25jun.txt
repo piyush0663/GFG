@@ -1,0 +1,46 @@
+vector<vector<int>> rotateMatrix(int k, vector<vector<int>> mat) {
+        // code here
+        int col=mat[0].size();
+        int row=mat.size();
+        int arr[row][col]={0};
+        for(int i=0;i<row;i++){
+            for(int j=0;j<col;j++){
+                if(k>col){
+                  int newk=k%col;  
+                  int p=(col-newk)%col;
+                  int newcol=j+p;
+                  if(newcol>=col){
+                      int kk=newcol%col;
+                      arr[i][kk]=mat[i][j];
+                  }
+                  else{
+                      arr[i][newcol]=mat[i][j];
+                  }
+                  
+                }
+                else{
+                  int p=(col-k)%col;
+                  int newcol=j+p;
+                  if(newcol>=col){
+                      int kk=newcol%col;
+                      arr[i][kk]=mat[i][j];
+                  }
+                  else{
+                      arr[i][newcol]=mat[i][j];
+                  }
+                  
+                
+                }
+                
+            }
+        }
+        vector<vector<int>>ans;
+        for(int i=0;i<row;i++){
+            vector<int>aa;
+            for(int j=0;j<col;j++){
+                aa.push_back(arr[i][j]);
+            }
+            ans.push_back(aa);
+        }
+        return ans;
+    }
