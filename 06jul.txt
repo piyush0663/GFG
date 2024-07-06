@@ -1,0 +1,23 @@
+void build(Node*& root , Node*& prev){
+       if(root){
+           build(root->left , prev);
+           if(prev){
+               prev->next=root;
+               prev=root;
+           }else{
+               prev=root;
+           }
+           
+           build(root->right, prev);
+       }
+   }
+    
+    void populateNext(Node *root) {
+        // code here
+      Node* prev=nullptr;
+    
+      build(root, prev );
+       
+      
+       
+    }
