@@ -1,0 +1,30 @@
+class Solution {
+  public:
+  
+    bool traverse(Node* root , int key , int sum)
+    {
+        // base case 
+        if (root == NULL)
+        {
+           
+            return false;
+        }
+        
+        sum += root -> data;
+        
+        if(root -> left == NULL && root -> right == NULL)
+        {
+            return sum == key;
+        }
+        
+        return  traverse(root -> left , key , sum) || traverse(root -> right , key , sum);
+    }
+    bool hasPathSum(Node *root, int target) {
+       
+       int sum = 0 ;
+       return traverse(root , target , sum);
+       
+       
+       
+    }
+};
