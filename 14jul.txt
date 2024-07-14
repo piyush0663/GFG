@@ -1,0 +1,15 @@
+void segregate0and1(vector<int> &arr) {
+        int a=0,b=arr.size()-1;
+        while(a<b)
+        {
+            if(arr[a]==1)
+            {
+                int temp=arr[a];
+                arr[a]=arr[b];
+                arr[b]=temp;
+                b--;
+            }
+            else
+            a++;
+        }
+    }
